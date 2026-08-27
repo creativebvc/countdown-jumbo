@@ -1,454 +1,435 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BVC Open House Countdown</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BVC Open House Countdown - Jumbotron</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --accent-warm: #f5ad57;
-            --accent-link: #99daff;
-            --text-primary: #ffffff;
-            --hairline: rgba(255, 255, 255, 0.18);
-        }
+  <style>
+    :root {
+      --accent-warm: #f5ad57;
+      --accent-link: #99daff;
+      --text-primary: #ffffff;
+      --hairline: rgba(255, 255, 255, 0.18);
+    }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        body {
-            height: 100vh; width: 100vw;
-            position: relative;
-            font-family: 'Poppins', sans-serif;
-            color: var(--text-primary);
-            background: linear-gradient(45deg, #2e2baf 0%, #102a58 100%);
-            background-size: 100% 100%;
-            display: flex; justify-content: center; align-items: center;
-            overflow: hidden;
-            user-select: none; -webkit-user-select: none;
-        }
+    body {
+      height: 100vh; width: 100vw;
+      position: relative;
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-primary);
+      background: linear-gradient(45deg, #2e2baf 0%, #102a58 100%);
+      background-size: 100% 100%;
+      display: flex; justify-content: center; align-items: center;
+      overflow: hidden;
+      user-select: none; -webkit-user-select: none;
+    }
 
-        /* ========================================
-           AMBIENT DEPTH
-           Two soft light pools drifting on transform
-           only. Ties the warm headline into the
-           cool ground without a flat overlay.
-           ======================================== */
-        .glow {
-            position: absolute;
-            border-radius: 50%;
-            pointer-events: none;
-            will-change: transform;
-        }
+    /* ========================================
+       AMBIENT DEPTH
+       Scaled down for the shorter canvas.
+       ======================================== */
+    .glow {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      will-change: transform;
+    }
 
-        .glow-cool {
-            top: -420px; left: -320px;
-            width: 1500px; height: 1500px;
-            background: radial-gradient(circle, rgba(120, 112, 255, 0.28) 0%, rgba(120, 112, 255, 0) 62%);
-            animation: driftA 54s ease-in-out infinite;
-        }
+    .glow-cool {
+      top: -300px; left: -240px;
+      width: 1100px; height: 1100px;
+      background: radial-gradient(circle, rgba(120, 112, 255, 0.28) 0%, rgba(120, 112, 255, 0) 62%);
+      animation: driftA 54s ease-in-out infinite;
+    }
 
-        .glow-warm {
-            bottom: -520px; right: -380px;
-            width: 1400px; height: 1400px;
-            background: radial-gradient(circle, rgba(255, 76, 117, 0.16) 0%, rgba(255, 76, 117, 0) 64%);
-            animation: driftB 66s ease-in-out infinite;
-        }
+    .glow-warm {
+      bottom: -380px; right: -280px;
+      width: 1000px; height: 1000px;
+      background: radial-gradient(circle, rgba(255, 76, 117, 0.16) 0%, rgba(255, 76, 117, 0) 64%);
+      animation: driftB 66s ease-in-out infinite;
+    }
 
-        @keyframes driftA {
-            0%   { transform: translate(0, 0); }
-            50%  { transform: translate(90px, 60px); }
-            100% { transform: translate(0, 0); }
-        }
+    @keyframes driftA {
+      0%   { transform: translate(0, 0); }
+      50%  { transform: translate(70px, 44px); }
+      100% { transform: translate(0, 0); }
+    }
 
-        @keyframes driftB {
-            0%   { transform: translate(0, 0); }
-            50%  { transform: translate(-70px, -50px); }
-            100% { transform: translate(0, 0); }
-        }
+    @keyframes driftB {
+      0%   { transform: translate(0, 0); }
+      50%  { transform: translate(-54px, -36px); }
+      100% { transform: translate(0, 0); }
+    }
 
-        /* ========================================
-           STAGE
-           1720 wide, height driven by content and
-           optically centred by the body. Side
-           margins clear TV overscan.
-           ======================================== */
-        .stage {
-            width: 1720px;
-            flex-shrink: 0;
-            position: relative;
-            z-index: 1;
-        }
+    /* ========================================
+       STAGE
+       1648 wide inside 1748, leaving 50px of
+       side margin for overscan.
+       ======================================== */
+    .stage {
+      width: 1648px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
 
-        /* ========================================
-           TOP BLOCK — 960 / 100 / 660
-           Left column height matches the hero
-           number's line box so the eyebrow and the
-           headline bracket it exactly.
-           ======================================== */
-        .top-block {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
+    /* ========================================
+       TOP BLOCK — 928 / 60 / 660
+       ======================================== */
+    .top-block {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
 
-        .col-left {
-            width: 960px; height: 270px;
-            display: flex; flex-direction: column; justify-content: space-between;
-        }
+    .col-left {
+      width: 928px; height: 150px;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
 
-        .col-right { width: 700px; }
+    .col-right { width: 660px; }
 
-        /* Optical offsets: line boxes are not glyph
-           edges. 22px drops the eyebrow's cap-height
-           onto the digit tops; 10px lifts the
-           headline's baseline onto the digit
-           baseline. Zero both out if the TV renders
-           Poppins with different metrics. */
-        .eyebrow {
-            font-size: 40px; font-weight: 600; line-height: 32px;
-            text-transform: uppercase; letter-spacing: 5px;
-            color: #ffcf99;
-            margin-top: 19px;
-        }
+    /* Optical offsets recomputed for the smaller
+       type: 15px drops the eyebrow's cap-height
+       onto the digit tops, 4px lifts the headline's
+       baseline onto the digit baseline. */
+    .eyebrow {
+      font-size: 24px; font-weight: 600; line-height: 20px;
+      text-transform: uppercase; letter-spacing: 3px;
+      color: #ffcf99;
+      margin-top: 15px;
+    }
 
-        .headline-wrap { margin-bottom: 10px; }
+    .headline-wrap { margin-bottom: 4px; }
 
-        .headline {
-            display: inline-block;
-            font-size: 160px; font-weight: 700; line-height: 152px;
-            letter-spacing: -5px;
-            white-space: nowrap;
-            color: var(--accent-warm); /* fallback if background-clip is unsupported */
-            background: linear-gradient(45deg, #f5ad57 0%, #ff4c75 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    .headline {
+      display: inline-block;
+      font-size: 100px; font-weight: 700; line-height: 95px;
+      letter-spacing: -3px;
+      white-space: nowrap;
+      color: var(--accent-warm); /* fallback if background-clip is unsupported */
+      background: linear-gradient(45deg, #f5ad57 0%, #ff4c75 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-        /* ========================================
-           HERO COUNT
-           ======================================== */
-        .hero-unit { text-align: right; }
+    /* ========================================
+       HERO COUNT
+       ======================================== */
+    .hero-unit { text-align: right; }
 
-        /* hero-value and hero-label are both
-           inline-block so their widths can be
-           measured. Each needs its own block-level
-           line or they sit side by side. */
-        .hero-line { display: block; }
+    .hero-line { display: block; }
 
-        .hero-value {
-            display: inline-block;
-            color: #ffcf99;
-            font-size: 300px; font-weight: 700; line-height: 270px;
-            letter-spacing: -12px;
-            font-variant-numeric: tabular-nums;
-            text-shadow: 0 10px 44px rgba(16, 42, 88, 0.45);
-        }
+    .hero-value {
+      display: inline-block;
+      color: #ffcf99;
+      font-size: 168px; font-weight: 700; line-height: 150px;
+      letter-spacing: -7px;
+      font-variant-numeric: tabular-nums;
+      text-shadow: 0 6px 26px rgba(16, 42, 88, 0.45);
+    }
 
-        .hero-value.is-word { font-size: 196px; line-height: 270px; letter-spacing: -7px; }
+    .hero-value.is-word { font-size: 110px; line-height: 150px; letter-spacing: -4px; }
 
-        /* Matches the eyebrow exactly in size, weight and tracking. */
-        .hero-label {
-            display: inline-block;
-            font-size: 40px; font-weight: 600; line-height: 32px;
-            text-transform: uppercase; letter-spacing: 5px;
-            white-space: nowrap;
-            color: #ffcf99;
-            margin-top: 18px;
-        }
+    /* Matches the eyebrow exactly in size, weight and tracking. */
+    .hero-label {
+      display: inline-block;
+      font-size: 24px; font-weight: 600; line-height: 20px;
+      text-transform: uppercase; letter-spacing: 3px;
+      white-space: nowrap;
+      color: #ffcf99;
+      margin-top: 10px;
+    }
 
-        /* Event-day state */
-        .live-block {
-            display: none;
-            align-items: center; justify-content: flex-end;
-            height: 270px;
-            font-size: 104px; font-weight: 700; letter-spacing: -3px;
-        }
+    /* Event-day state */
+    .live-block {
+      display: none;
+      align-items: center; justify-content: flex-end;
+      height: 150px;
+      font-size: 58px; font-weight: 700; letter-spacing: -2px;
+    }
 
-        .live-dot {
-            width: 28px; height: 28px;
-            border-radius: 50%;
-            background: #4ade80;
-            margin-right: 30px;
-            animation: breathe 2.4s ease-in-out infinite;
-        }
+    .live-dot {
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: #4ade80;
+      margin-right: 18px;
+      animation: breathe 2.4s ease-in-out infinite;
+    }
 
-        @keyframes breathe {
-            0%   { transform: scale(1); opacity: 1; }
-            50%  { transform: scale(0.78); opacity: 0.5; }
-            100% { transform: scale(1); opacity: 1; }
-        }
+    @keyframes breathe {
+      0%   { transform: scale(1); opacity: 1; }
+      50%  { transform: scale(0.78); opacity: 0.5; }
+      100% { transform: scale(1); opacity: 1; }
+    }
 
-        /* ========================================
-           RULES — full stage width
-           ======================================== */
-        .rule {
-            width: 100%; height: 1px;
-            background: var(--hairline);
-            margin-top: 60px;
-        }
+    /* ========================================
+       RULES — full stage width
+       ======================================== */
+    .rule {
+      width: 100%; height: 1px;
+      background: var(--hairline);
+      margin-top: 28px;
+    }
 
-        /* ========================================
-           DETAIL BLOCK
-           Two shared baselines across the board:
-           the date sits on the sub-unit numbers,
-           the door time sits on their labels.
-           ======================================== */
-        .detail-block { margin-top: 60px; }
+    /* ========================================
+       DETAIL BLOCK
+       940 + 4 x 177 = 1648, so the last column
+       stays flush with the hero number.
+       ======================================== */
+    .detail-block { margin-top: 28px; }
 
-        /* The date and the numbers are siblings in
-           one row so the browser baseline-aligns
-           them. 980 + 4 x 185 = 1720, which keeps
-           the last column flush with the hero
-           number's right edge. */
-        .detail-row {
-            display: flex;
-            align-items: flex-start;
-        }
+    .detail-row {
+      display: flex;
+      align-items: flex-start;
+    }
 
-        .detail-row-labels { margin-top: 10px; }
+    .detail-row-labels { margin-top: 6px; }
 
-        .detail-text { width: 980px; }
+    .detail-text { width: 940px; }
 
-        .d-col {
-            width: 145px;
-            text-align: right;
-            margin-left: 40px;
-        }
+    .d-col {
+      width: 139px;
+      text-align: right;
+      margin-left: 38px;
+    }
 
-        .when-date {
-            font-size: 52px; font-weight: 600; line-height: 60px;
-            letter-spacing: -0.5px;
-        }
+    .when-date {
+      font-size: 30px; font-weight: 600; line-height: 34px;
+      letter-spacing: -0.5px;
+    }
 
-        .when-time {
-            font-size: 40px; font-weight: 400; line-height: 20px;
-            opacity: 0.72;
-            transform: translateY(-14px);
-        }
+    .when-time {
+      font-size: 24px; font-weight: 400; line-height: 12px;
+      opacity: 0.72;
+      transform: translateY(-8px);
+    }
 
-        .cell-value {
-            font-size: 84px; font-weight: 600; line-height: 88px;
-            letter-spacing: -2px;
-            font-variant-numeric: tabular-nums;
-        }
+    .cell-value {
+      font-size: 48px; font-weight: 600; line-height: 50px;
+      letter-spacing: -1px;
+      font-variant-numeric: tabular-nums;
+    }
 
-        .cell-label {
-            font-size: 20px; font-weight: 600; line-height: 28px;
-            text-transform: uppercase; letter-spacing: 4px;
-            opacity: 0.55;
-        }
+    .cell-label {
+      font-size: 14px; font-weight: 600; line-height: 18px;
+      text-transform: uppercase; letter-spacing: 3px;
+      opacity: 0.55;
+    }
 
-        /* Event day: the count is over, so the
-           columns clear but hold their space. */
-        .stage.is-live .d-col { visibility: hidden; }
+    /* Event day: the count is over, so the
+       columns clear but hold their space. */
+    .stage.is-live .d-col { visibility: hidden; }
 
-        /* ========================================
-           CTA
-           ======================================== */
-        .cta {
-            margin-top: 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    /* ========================================
+       CTA
+       ======================================== */
+    .cta {
+      margin-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        .cta-copy { min-width: 0; }
+    .cta-copy { min-width: 0; }
 
-        .cta-label {
-            font-size: 20px; font-weight: 600; line-height: 28px;
-            text-transform: uppercase; letter-spacing: 5px;
-            opacity: 0.62;
-        }
+    .cta-label {
+      font-size: 14px; font-weight: 600; line-height: 18px;
+      text-transform: uppercase; letter-spacing: 3px;
+      opacity: 0.62;
+    }
 
-        .cta-url {
-            font-size: 52px; font-weight: 600; line-height: 60px;
-            letter-spacing: -0.5px;
-            white-space: nowrap;
-            color: var(--accent-link);
-            margin-top: 12px;
-        }
+    .cta-url {
+      font-size: 30px; font-weight: 600; line-height: 34px;
+      letter-spacing: -0.5px;
+      white-space: nowrap;
+      color: var(--accent-link);
+      margin-top: 8px;
+    }
 
-        .cta-qr {
-            width: 140px;
-            height: 140px;
-            display: block;
-            flex-grow: 0;
-            flex-shrink: 0;
-            flex-basis: 140px;
-            margin-left: 40px;
-        }
+    .cta-qr {
+      width: 110px;
+      height: 110px;
+      display: block;
+      flex-grow: 0;
+      flex-shrink: 0;
+      flex-basis: 110px;
+      margin-left: 34px;
+    }
 
-        /* ========================================
-           ENTRANCE CASCADE
-           transform + opacity only
-           ======================================== */
-        .reveal {
-            opacity: 0;
-            transform: translateY(26px);
-            animation: reveal 900ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
+    /* ========================================
+       ENTRANCE CASCADE
+       transform + opacity only
+       ======================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: reveal 900ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
 
-        .d1 { animation-delay: 0ms; }
-        .d2 { animation-delay: 120ms; }
-        .d3 { animation-delay: 240ms; }
-        .d4 { animation-delay: 360ms; }
-        .d5 { animation-delay: 480ms; }
+    .d1 { animation-delay: 0ms; }
+    .d2 { animation-delay: 120ms; }
+    .d3 { animation-delay: 240ms; }
+    .d4 { animation-delay: 360ms; }
+    .d5 { animation-delay: 480ms; }
 
-        @keyframes reveal {
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+    @keyframes reveal {
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
 
-    <div class="glow glow-cool"></div>
-    <div class="glow glow-warm"></div>
+  <div class="glow glow-cool"></div>
+  <div class="glow glow-warm"></div>
 
-    <div class="stage" id="stage">
+  <div class="stage" id="stage">
 
-        <div class="top-block">
+    <div class="top-block">
 
-            <div class="col-left reveal d1">
-                <div class="eyebrow">Don't miss our next</div>
-                <div class="headline-wrap"><span class="headline">Open House</span></div>
-            </div>
+      <div class="col-left reveal d1">
+        <div class="eyebrow">Don't miss our next</div>
+        <div class="headline-wrap"><span class="headline">Open House</span></div>
+      </div>
 
-            <div class="col-right reveal d2">
-                <div id="counter-block">
-                    <div class="hero-unit">
-                        <div class="hero-line"><span class="hero-value" id="hero-value">--</span></div>
-                        <div class="hero-line"><span class="hero-label" id="hero-label">Days to go</span></div>
-                    </div>
-                </div>
-                <div class="live-block" id="live-block">
-                    <span class="live-dot"></span>Happening now
-                </div>
-            </div>
-
+      <div class="col-right reveal d2">
+        <div id="counter-block">
+          <div class="hero-unit">
+            <div class="hero-line"><span class="hero-value" id="hero-value">--</span></div>
+            <div class="hero-line"><span class="hero-label" id="hero-label">Days to go</span></div>
+          </div>
         </div>
-
-        <div class="rule reveal d3"></div>
-
-        <div class="detail-block reveal d3">
-
-            <div class="detail-row">
-                <div class="detail-text when-date">Saturday, October 3, 2026</div>
-                <div class="d-col cell-value" id="val-days">--</div>
-                <div class="d-col cell-value" id="val-hours">--</div>
-                <div class="d-col cell-value" id="val-minutes">--</div>
-                <div class="d-col cell-value" id="val-seconds">--</div>
-            </div>
-
-            <div class="detail-row detail-row-labels">
-                <div class="detail-text when-time">Doors open at 10:00 AM</div>
-                <div class="d-col cell-label">Days</div>
-                <div class="d-col cell-label">Hours</div>
-                <div class="d-col cell-label">Minutes</div>
-                <div class="d-col cell-label">Seconds</div>
-            </div>
-
+        <div class="live-block" id="live-block">
+          <span class="live-dot"></span>Happening now
         </div>
-
-        <div class="rule reveal d4"></div>
-
-        <div class="cta reveal d5">
-            <div class="cta-copy">
-                <div class="cta-label">Register at</div>
-                <div class="cta-url">choose.bowvalleycollege.ca/open-house</div>
-            </div>
-            <img class="cta-qr"
-                 src="assets/QRCODE.svg"
-                 alt="QR code for Open House registration"
-                 onerror="this.style.visibility='hidden';">
-        </div>
+      </div>
 
     </div>
 
-    <script>
-        // Event: Saturday, October 3, 2026, 10:00 AM local (Calgary).
-        // Built from date parts, not an ISO string -- older TV browsers
-        // parse ISO offsets inconsistently and can return NaN.
-        var EVENT_YEAR = 2026;
-        var EVENT_MONTH = 9;   // 0-indexed: 9 = October
-        var EVENT_DAY = 3;
-        var EVENT_HOUR = 10;
-        var EVENT_MINUTE = 0;
+    <div class="rule reveal d3"></div>
 
-        var elHeroValue = document.getElementById('hero-value');
-        var elHeroLabel = document.getElementById('hero-label');
-        var elDays = document.getElementById('val-days');
-        var elHours = document.getElementById('val-hours');
-        var elMinutes = document.getElementById('val-minutes');
-        var elSeconds = document.getElementById('val-seconds');
-        var elCounter = document.getElementById('counter-block');
-        var elLive = document.getElementById('live-block');
-        var elStage = document.getElementById('stage');
+    <div class="detail-block reveal d3">
 
-        var lastLabelText = '';
-        var lastValueText = '';
+      <div class="detail-row">
+        <div class="detail-text when-date">Saturday, October 3, 2026</div>
+        <div class="d-col cell-value" id="val-days">--</div>
+        <div class="d-col cell-value" id="val-hours">--</div>
+        <div class="d-col cell-value" id="val-minutes">--</div>
+        <div class="d-col cell-value" id="val-seconds">--</div>
+      </div>
 
-        function pad(num) {
-            return num < 10 ? '0' + num : '' + num;
-        }
+      <div class="detail-row detail-row-labels">
+        <div class="detail-text when-time">Doors open at 10:00 AM</div>
+        <div class="d-col cell-label">Days</div>
+        <div class="d-col cell-label">Hours</div>
+        <div class="d-col cell-label">Minutes</div>
+        <div class="d-col cell-label">Seconds</div>
+      </div>
 
-        function updateCountdown() {
-            var eventTime = new Date(EVENT_YEAR, EVENT_MONTH, EVENT_DAY, EVENT_HOUR, EVENT_MINUTE, 0).getTime();
-            var now = new Date().getTime();
-            var distance = eventTime - now;
+    </div>
 
-            if (distance <= 0) {
-                elCounter.style.display = 'none';
-                elLive.style.display = 'flex';
-                elStage.className = 'stage is-live';
-                return;
-            }
+    <div class="rule reveal d4"></div>
 
-            elCounter.style.display = 'block';
-            elLive.style.display = 'none';
-            elStage.className = 'stage';
+    <div class="cta reveal d5">
+      <div class="cta-copy">
+        <div class="cta-label">Register at</div>
+        <div class="cta-url">choose.bowvalleycollege.ca/open-house</div>
+      </div>
+      <img class="cta-qr"
+           src="assets/QRCODE.svg"
+           alt="QR code for Open House registration"
+           onerror="this.style.visibility='hidden';">
+    </div>
 
-            var days = Math.floor(distance / 86400000);
-            var hours = Math.floor((distance % 86400000) / 3600000);
-            var minutes = Math.floor((distance % 3600000) / 60000);
-            var seconds = Math.floor((distance % 60000) / 1000);
+  </div>
 
-            var valueText;
-            var labelText;
+  <script>
+    // Event: Saturday, October 3, 2026, 10:00 AM local (Calgary).
+    // Built from date parts, not an ISO string -- older TV browsers
+    // parse ISO offsets inconsistently and can return NaN.
+    var EVENT_YEAR = 2026;
+    var EVENT_MONTH = 9;   // 0-indexed: 9 = October
+    var EVENT_DAY = 3;
+    var EVENT_HOUR = 10;
+    var EVENT_MINUTE = 0;
 
-            if (days === 0) {
-                // Final morning: a giant "0" reads as nothing. Name the day instead.
-                valueText = 'Today';
-                labelText = 'Doors open at 10 AM';
-                elHeroValue.className = 'hero-value is-word';
-            } else {
-                valueText = '' + days;
-                labelText = days === 1 ? 'Day to go' : 'Days to go';
-                elHeroValue.className = 'hero-value';
-            }
+    var elHeroValue = document.getElementById('hero-value');
+    var elHeroLabel = document.getElementById('hero-label');
+    var elDays = document.getElementById('val-days');
+    var elHours = document.getElementById('val-hours');
+    var elMinutes = document.getElementById('val-minutes');
+    var elSeconds = document.getElementById('val-seconds');
+    var elCounter = document.getElementById('counter-block');
+    var elLive = document.getElementById('live-block');
+    var elStage = document.getElementById('stage');
 
-            // Only update the hero text when it changes.
-            if (valueText !== lastValueText || labelText !== lastLabelText) {
-                elHeroValue.innerText = valueText;
-                elHeroLabel.innerText = labelText;
-                lastValueText = valueText;
-                lastLabelText = labelText;
-            }
+    var lastLabelText = '';
+    var lastValueText = '';
 
-            elDays.innerText = '' + days;
-            elHours.innerText = pad(hours);
-            elMinutes.innerText = pad(minutes);
-            elSeconds.innerText = pad(seconds);
-        }
+    function pad(num) {
+      return num < 10 ? '0' + num : '' + num;
+    }
 
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
+    function updateCountdown() {
+      var eventTime = new Date(EVENT_YEAR, EVENT_MONTH, EVENT_DAY, EVENT_HOUR, EVENT_MINUTE, 0).getTime();
+      var now = new Date().getTime();
+      var distance = eventTime - now;
 
-        console.log('Open House countdown initialized');
-    </script>
+      if (distance <= 0) {
+        elCounter.style.display = 'none';
+        elLive.style.display = 'flex';
+        elStage.className = 'stage is-live';
+        return;
+      }
+
+      elCounter.style.display = 'block';
+      elLive.style.display = 'none';
+      elStage.className = 'stage';
+
+      var days = Math.floor(distance / 86400000);
+      var hours = Math.floor((distance % 86400000) / 3600000);
+      var minutes = Math.floor((distance % 3600000) / 60000);
+      var seconds = Math.floor((distance % 60000) / 1000);
+
+      var valueText;
+      var labelText;
+
+      if (days === 0) {
+        // Final morning: a giant "0" reads as nothing. Name the day instead.
+        valueText = 'Today';
+        labelText = 'Doors open at 10 AM';
+        elHeroValue.className = 'hero-value is-word';
+      } else {
+        valueText = '' + days;
+        labelText = days === 1 ? 'Day to go' : 'Days to go';
+        elHeroValue.className = 'hero-value';
+      }
+
+      // Only update the hero text when it changes.
+      if (valueText !== lastValueText || labelText !== lastLabelText) {
+        elHeroValue.innerText = valueText;
+        elHeroLabel.innerText = labelText;
+        lastValueText = valueText;
+        lastLabelText = labelText;
+      }
+
+      elDays.innerText = '' + days;
+      elHours.innerText = pad(hours);
+      elMinutes.innerText = pad(minutes);
+      elSeconds.innerText = pad(seconds);
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+    console.log('Open House countdown initialized (jumbotron)');
+  </script>
 </body>
 </html>
