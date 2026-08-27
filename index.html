@@ -32,43 +32,6 @@
     }
 
     /* ========================================
-       AMBIENT DEPTH
-       Scaled down for the shorter canvas.
-       ======================================== */
-    .glow {
-      position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
-      will-change: transform;
-    }
-
-    .glow-cool {
-      top: -300px; left: -240px;
-      width: 1100px; height: 1100px;
-      background: radial-gradient(circle, rgba(120, 112, 255, 0.28) 0%, rgba(120, 112, 255, 0) 62%);
-      animation: driftA 54s ease-in-out infinite;
-    }
-
-    .glow-warm {
-      bottom: -380px; right: -280px;
-      width: 1000px; height: 1000px;
-      background: radial-gradient(circle, rgba(255, 76, 117, 0.16) 0%, rgba(255, 76, 117, 0) 64%);
-      animation: driftB 66s ease-in-out infinite;
-    }
-
-    @keyframes driftA {
-      0%   { transform: translate(0, 0); }
-      50%  { transform: translate(70px, 44px); }
-      100% { transform: translate(0, 0); }
-    }
-
-    @keyframes driftB {
-      0%   { transform: translate(0, 0); }
-      50%  { transform: translate(-54px, -36px); }
-      100% { transform: translate(0, 0); }
-    }
-
-    /* ========================================
        STAGE
        1648 wide inside 1748, leaving 50px of
        side margin for overscan.
@@ -287,9 +250,6 @@
   </style>
 </head>
 <body>
-
-  <div class="glow glow-cool"></div>
-  <div class="glow glow-warm"></div>
 
   <div class="stage" id="stage">
 
